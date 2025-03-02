@@ -16,6 +16,7 @@ SOURCES += main.cpp\
         dialog.cpp \
     hps.cpp \
     ADLX345.cpp \
+    mpu6050.cpp \
     tab_gsensor.cpp \
     fpga.cpp \
     tab_button.cpp \
@@ -37,7 +38,8 @@ HEADERS  += dialog.h \
     hps_lcd/lcd_graphic.h \
     hps_lcd/lcd_wcg12864_driver.h \
     hps_lcd/font.h \
-    hps_audio.h
+    hps_audio.h \
+    mpu6050.h
 
 LIBS += -L$$PWD/alsa/library -lasound
 

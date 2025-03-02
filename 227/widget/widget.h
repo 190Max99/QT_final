@@ -1,5 +1,5 @@
-#ifndef _H
-#define _H
+#ifndef WIDGET_H
+#define WIDGET_H
 
 #include <QMainWindow>
 
@@ -20,4 +20,4 @@ public:
 private:
     Ui::MainWindow *ui;
 };
-#endif // _H
+#endif // WIDGET_H

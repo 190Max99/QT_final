@@ -511,7 +511,7 @@ public:
         checkBox_LED7->setText(QApplication::translate("Dialog", "LED7", 0));
         checkBox_LED8->setText(QApplication::translate("Dialog", "LED8", 0));
         groupBox_hps_led->setTitle(QApplication::translate("Dialog", "HPS LED", 0));
-        checkBox_HPS_LED0->setText(QApplication::translate("Dialog", "orige", 0));
+        checkBox_HPS_LED0->setText(QApplication::translate("Dialog", "LED0", 0));
         pushButton_LightAllLed->setText(QApplication::translate("Dialog", "Light All", 0));
         pushButton_UnlightAllLed->setText(QApplication::translate("Dialog", "Unlight All", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabLED), QApplication::translate("Dialog", "LED", 0));

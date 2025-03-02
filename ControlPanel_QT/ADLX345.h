@@ -7,7 +7,7 @@
 
 /* Bit values in BW_RATE                                                */
 /* Expresed as output data rate */
-#define XL345_RATE_3200       0x0f
+#define XL345_RATE_3200       0x0f  // MPU6050 doesn't have this rate, but keeping it for consistency
 #define XL345_RATE_1600       0x0e
 #define XL345_RATE_800        0x0d
 #define XL345_RATE_400        0x0c
@@ -29,10 +29,10 @@
 /* Register values read in DATAX0 through DATAZ1 are dependant on the
    value specified in data format.  Customer code will need to interpret
    the data as desired.                                                 */
-#define XL345_RANGE_2G             0x00
-#define XL345_RANGE_4G             0x01
-#define XL345_RANGE_8G             0x02
-#define XL345_RANGE_16G            0x03
+#define XL345_RANGE_2G             0x00  // For MPU6050: equivalent is 0x00 for 2G range
+#define XL345_RANGE_4G             0x01  // For MPU6050: equivalent is 0x08 for 4G range
+#define XL345_RANGE_8G             0x02  // For MPU6050: equivalent is 0x10 for 8G range
+#define XL345_RANGE_16G            0x03  // For MPU6050: equivalent is 0x18 for 16G range
 #define XL345_DATA_JUST_RIGHT      0x00
 #define XL345_DATA_JUST_LEFT       0x04
 #define XL345_10BIT                0x00
@@ -75,20 +75,19 @@
 #define ADXL345_REG_INT_ENALBE  0x2E  // default value: 0x00
 #define ADXL345_REG_INT_MAP     0x2F  // default value: 0x00
 #define ADXL345_REG_INT_SOURCE  0x30  // default value: 0x02
-#define ADXL345_REG_DATA_FORMAT 0x31  // defuault value: 0x00
-#define ADXL345_REG_DATAX0      0x32  // read only
-#define ADXL345_REG_DATAX1      0x33  // read only
-#define ADXL345_REG_DATAY0      0x34  // read only
-#define ADXL345_REG_DATAY1      0x35  // read only
-#define ADXL345_REG_DATAZ0      0x36  // read only
-#define ADXL345_REG_DATAZ1      0x37  // read only
+#define ADXL345_REG_DATA_FORMAT 0x31  // default value: 0x00
+#define ADXL345_REG_DATAX0      0x43  // read only
+#define ADXL345_REG_DATAX1      0x44  // read only
+#define ADXL345_REG_DATAY0      0x45  // read only
+#define ADXL345_REG_DATAY1      0x46  // read only
+#define ADXL345_REG_DATAZ0      0x47  // read only
+#define ADXL345_REG_DATAZ1      0x48  // read only
 
 
 bool ADXL345_Init(int file);
 bool ADXL345_IsDataReady(int file);
 bool ADXL345_XYZ_Read(int file, uint16_t szData16[3]);
 bool ADXL345_IdRead(int file, uint8_t *pId);
-
 
 
 #endif // ADXL345_H
