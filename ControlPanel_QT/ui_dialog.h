@@ -371,17 +371,17 @@ public:
         tabGsensor->setCursor(QCursor(Qt::ArrowCursor));
         label_Z = new QLabel(tabGsensor);
         label_Z->setObjectName(QStringLiteral("label_Z"));
-        label_Z->setGeometry(QRect(20, 160, 87, 35));
+        label_Z->setGeometry(QRect(20, 160, 111, 35));
         QFont font1;
         font1.setPointSize(11);
         label_Z->setFont(font1);
         label_X = new QLabel(tabGsensor);
         label_X->setObjectName(QStringLiteral("label_X"));
-        label_X->setGeometry(QRect(20, 80, 87, 35));
+        label_X->setGeometry(QRect(20, 80, 111, 35));
         label_X->setFont(font1);
         label_Y = new QLabel(tabGsensor);
         label_Y->setObjectName(QStringLiteral("label_Y"));
-        label_Y->setGeometry(QRect(20, 120, 87, 35));
+        label_Y->setGeometry(QRect(20, 120, 111, 35));
         label_Y->setFont(font1);
         QIcon icon4;
         icon4.addFile(QStringLiteral(":/new/Myresource/tab/G-Sensor.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -490,7 +490,7 @@ public:
         QObject::connect(checkBox_LED7, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
         QObject::connect(checkBox_LED8, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(Dialog);

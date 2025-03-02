@@ -320,3 +320,14 @@ void Dialog::on_comboBox_LcdDemo_currentIndexChanged(int index)
         hps_lcd->Fill(0xFF);
     }
 }
+
+
+// Dialog::Dialog(QWidget *parent) :
+//     QDialog(parent),
+//     ui(new Ui::Dialog),
+//     m_Roll(0.0f),
+//     m_Pitch(0.0f),
+//     m_bGsensorDataValid(false)
+// {
+//     ui->setupUi(this);
+// }

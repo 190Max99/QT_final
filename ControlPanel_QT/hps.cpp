@@ -97,7 +97,7 @@ bool HPS::GsensorQuery(int16_t *X, int16_t *Y, int16_t *Z){
     if (m_file_gsensor >= 0){
         uint8_t id;
         if (MPU6050_IdRead(m_file_gsensor, &id) && id == 0x68) { // 确保 MPU6050 存在
-            bSuccess = MPU6050_Read_Accel(m_file_gsensor, szXYZ);
+            bSuccess = MPU6050_Read_Gyro(m_file_gsensor, szXYZ);
             if (bSuccess){
                 *X = szXYZ[0];
                 *Y = szXYZ[1];

@@ -815,58 +815,6 @@ dialog.o: dialog.cpp dialog.h \
 		hps_lcd/font.h \
 		hps_audio.h \
 		ui_dialog.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QVariant \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QAction \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qaction.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qicon.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qactiongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QApplication \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qdesktopwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qguiapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qinputmethod.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QButtonGroup \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qbuttongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QCheckBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcheckbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QComboBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcombobox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyleoption.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qvalidator.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyle.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabbar.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qrubberband.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qframe.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QGroupBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgroupbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QHeaderView \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qheaderview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QLabel \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlabel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QPushButton \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qpushbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QSpinBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QTabWidget \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QVBoxLayout \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qboxlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayoutitem.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgridlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QWidget \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QtGui \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QtGuiDepends \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QtCore \
@@ -902,8 +850,10 @@ dialog.o: dialog.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporarydir.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QScopedPointer \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporaryfile.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qidentityproxymodel.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qsortfilterproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstringlistmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonarray.h \
@@ -911,8 +861,10 @@ dialog.o: dialog.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsondocument.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractnativeeventfilter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qbasictimer.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmath.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmetaobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmimedata.h \
@@ -966,6 +918,7 @@ dialog.o: dialog.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qlinkedlist.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmessageauthenticationcode.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qqueue.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qscopedvaluerollback.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstack.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtextboundaryfinder.h \
@@ -978,6 +931,7 @@ dialog.o: dialog.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qaccessibleobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qaccessibleplugin.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qbitmap.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qicon.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qiconengine.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qiconengineplugin.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qimageiohandler.h \
@@ -992,6 +946,8 @@ dialog.o: dialog.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qdrag.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qgenericplugin.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qgenericpluginfactory.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qguiapplication.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qinputmethod.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qoffscreensurface.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qsurface.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qsurfaceformat.h \
@@ -1062,6 +1018,7 @@ dialog.o: dialog.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtextlist.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtexttable.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qdesktopservices.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qvalidator.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtguiversion.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QPainter
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog.o dialog.cpp
@@ -1133,7 +1090,7 @@ hps.o: hps.cpp /opt/qt5/qt5.5.1-intel-soc/include/QtCore/QDebug \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qset.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcontiguouscache.h \
 		hps.h \
-		ADLX345.h \
+		mpu6050.h \
 		../../../intelFPGA/20.1/embedded/ip/altera/hps/altera_hps/hwlib/include/soc_cv_av/socal/socal.h \
 		../../../intelFPGA/20.1/embedded/ip/altera/hps/altera_hps/hwlib/include/soc_cv_av/socal/hps.h \
 		../../../intelFPGA/20.1/embedded/ip/altera/hps/altera_hps/hwlib/include/soc_cv_av/socal/alt_gpio.h
@@ -1258,58 +1215,6 @@ tab_gsensor.o: tab_gsensor.cpp dialog.h \
 		hps_lcd/font.h \
 		hps_audio.h \
 		ui_dialog.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QVariant \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QAction \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qaction.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qicon.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qactiongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QApplication \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qdesktopwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qguiapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qinputmethod.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QButtonGroup \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qbuttongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QCheckBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcheckbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QComboBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcombobox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyleoption.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qvalidator.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyle.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabbar.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qrubberband.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qframe.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QGroupBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgroupbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QHeaderView \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qheaderview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QLabel \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlabel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QPushButton \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qpushbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QSpinBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QTabWidget \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QVBoxLayout \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qboxlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayoutitem.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgridlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QWidget \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QPainter \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qpainter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtextoption.h \
@@ -1347,8 +1252,10 @@ tab_gsensor.o: tab_gsensor.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporarydir.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QScopedPointer \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporaryfile.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qidentityproxymodel.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qsortfilterproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstringlistmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonarray.h \
@@ -1356,8 +1263,10 @@ tab_gsensor.o: tab_gsensor.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsondocument.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractnativeeventfilter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qbasictimer.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmath.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmetaobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmimedata.h \
@@ -1411,6 +1320,7 @@ tab_gsensor.o: tab_gsensor.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qlinkedlist.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmessageauthenticationcode.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qqueue.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qscopedvaluerollback.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstack.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtextboundaryfinder.h \
@@ -1605,58 +1515,6 @@ tab_button.o: tab_button.cpp dialog.h \
 		hps_lcd/font.h \
 		hps_audio.h \
 		ui_dialog.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QVariant \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QAction \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qaction.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qicon.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qactiongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QApplication \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qdesktopwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qguiapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qinputmethod.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QButtonGroup \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qbuttongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QCheckBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcheckbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QComboBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcombobox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyleoption.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qvalidator.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyle.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabbar.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qrubberband.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qframe.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QGroupBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgroupbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QHeaderView \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qheaderview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QLabel \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlabel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QPushButton \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qpushbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QSpinBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QTabWidget \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QVBoxLayout \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qboxlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayoutitem.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgridlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QWidget \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QtGui \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QtGuiDepends \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QtCore \
@@ -1692,8 +1550,10 @@ tab_button.o: tab_button.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporarydir.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QScopedPointer \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporaryfile.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qidentityproxymodel.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qsortfilterproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstringlistmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonarray.h \
@@ -1701,8 +1561,10 @@ tab_button.o: tab_button.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsondocument.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractnativeeventfilter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qbasictimer.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmath.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmetaobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmimedata.h \
@@ -1756,6 +1618,7 @@ tab_button.o: tab_button.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qlinkedlist.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmessageauthenticationcode.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qqueue.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qscopedvaluerollback.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstack.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtextboundaryfinder.h \
@@ -1768,6 +1631,7 @@ tab_button.o: tab_button.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qaccessibleobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qaccessibleplugin.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qbitmap.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qicon.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qiconengine.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qiconengineplugin.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qimageiohandler.h \
@@ -1782,6 +1646,8 @@ tab_button.o: tab_button.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qdrag.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qgenericplugin.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qgenericpluginfactory.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qguiapplication.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qinputmethod.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qoffscreensurface.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qsurface.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qsurfaceformat.h \
@@ -1852,6 +1718,7 @@ tab_button.o: tab_button.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtextlist.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtexttable.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qdesktopservices.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qvalidator.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtguiversion.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QPainter
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tab_button.o tab_button.cpp
@@ -1969,58 +1836,6 @@ tab_hex.o: tab_hex.cpp dialog.h \
 		hps_lcd/font.h \
 		hps_audio.h \
 		ui_dialog.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QVariant \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QAction \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qaction.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qicon.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qactiongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QApplication \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qdesktopwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qguiapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qinputmethod.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QButtonGroup \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qbuttongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QCheckBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcheckbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QComboBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcombobox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyleoption.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qvalidator.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyle.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabbar.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qrubberband.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qframe.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QGroupBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgroupbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QHeaderView \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qheaderview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QLabel \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlabel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QPushButton \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qpushbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QSpinBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QTabWidget \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QVBoxLayout \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qboxlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayoutitem.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgridlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QWidget \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QPainter \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qpainter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtextoption.h \
@@ -2058,8 +1873,10 @@ tab_hex.o: tab_hex.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporarydir.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QScopedPointer \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporaryfile.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qidentityproxymodel.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qsortfilterproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstringlistmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonarray.h \
@@ -2067,8 +1884,10 @@ tab_hex.o: tab_hex.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsondocument.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractnativeeventfilter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qbasictimer.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmath.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmetaobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmimedata.h \
@@ -2122,6 +1941,7 @@ tab_hex.o: tab_hex.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qlinkedlist.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmessageauthenticationcode.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qqueue.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qscopedvaluerollback.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstack.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtextboundaryfinder.h \
@@ -2244,58 +2064,6 @@ tab_ir.o: tab_ir.cpp dialog.h \
 		hps_lcd/font.h \
 		hps_audio.h \
 		ui_dialog.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QVariant \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QAction \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qaction.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qicon.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qactiongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QApplication \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qdesktopwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qguiapplication.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qinputmethod.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QButtonGroup \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qbuttongroup.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QCheckBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcheckbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QComboBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qcombobox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyleoption.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qvalidator.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractslider.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qstyle.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabbar.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qtabwidget.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qrubberband.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qframe.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QGroupBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgroupbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QHeaderView \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qheaderview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractitemview.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QLabel \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlabel.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QPushButton \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qpushbutton.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QSpinBox \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qspinbox.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QTabWidget \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QVBoxLayout \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qboxlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qlayoutitem.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/qgridlayout.h \
-		/opt/qt5/qt5.5.1-intel-soc/include/QtWidgets/QWidget \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/QPainter \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qpainter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtGui/qtextoption.h \
@@ -2333,8 +2101,10 @@ tab_ir.o: tab_ir.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporarydir.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/QScopedPointer \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtemporaryfile.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractitemmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qidentityproxymodel.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qitemselectionmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qsortfilterproxymodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstringlistmodel.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonarray.h \
@@ -2342,8 +2112,10 @@ tab_ir.o: tab_ir.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsondocument.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qjsonobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qeventloop.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qabstractnativeeventfilter.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qbasictimer.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qcoreapplication.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmath.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmetaobject.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmimedata.h \
@@ -2397,6 +2169,7 @@ tab_ir.o: tab_ir.cpp dialog.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qlinkedlist.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qmessageauthenticationcode.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qqueue.h \
+		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qregularexpression.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qscopedvaluerollback.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qstack.h \
 		/opt/qt5/qt5.5.1-intel-soc/include/QtCore/qtextboundaryfinder.h \
