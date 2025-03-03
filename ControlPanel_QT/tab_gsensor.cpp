@@ -56,8 +56,8 @@ void Dialog::TabGsensorPolling(HPS *hps) {
 void Dialog::TabGsensorDraw() {
     QPainter painter;
     QRect rc = ui->tabGsensor->rect();
-    const int ArrowLength = rc.height() / 3;  // 箭头长度
     QPoint center = rc.center();  // 旋转中心
+    const int PlaneSize = rc.height() / 4;  // 纸飞机尺寸
 
     painter.begin(ui->tabGsensor);
     painter.setRenderHint(QPainter::Antialiasing, true);
@@ -65,7 +65,7 @@ void Dialog::TabGsensorDraw() {
     // 画背景圆盘
     painter.setPen(QPen(Qt::black, 2, Qt::DashDotLine, Qt::RoundCap));
     painter.setBrush(QBrush(Qt::lightGray, Qt::SolidPattern));
-    painter.drawEllipse(rc.center(), ArrowLength + 10, ArrowLength + 10);
+    painter.drawEllipse(center, PlaneSize + 20, PlaneSize + 20);
 
     // 画十字线
     painter.setPen(QPen(Qt::gray, 1, Qt::DotLine, Qt::RoundCap));
@@ -73,22 +73,44 @@ void Dialog::TabGsensorDraw() {
     painter.drawLine(center.x(), rc.top(), center.x(), rc.bottom());
 
     if (m_bGsensorDataValid) {
-        // 旋转箭头
+        // 旋转纸飞机
         QTransform transform;
         transform.translate(center.x(), center.y());
-        transform.rotate(m_Yaw);  // 根据 Roll 角度旋转箭头
+        transform.rotate(m_Yaw, Qt::ZAxis);   // 偏航角（绕 Z 轴旋转）
+        transform.rotate(m_Pitch, Qt::YAxis); // 俯仰角（绕 Y 轴旋转）
+        transform.rotate(m_Roll, Qt::XAxis);  // 翻滚角（绕 X 轴旋转）
+        transform.translate(-center.x(), -center.y());
         painter.setTransform(transform);
 
-        // 绘制箭头
-        QPoint arrowHead(0, -ArrowLength);  // 指向顶部
-        QPoint leftWing(-10, -ArrowLength + 15);
-        QPoint rightWing(10, -ArrowLength + 15);
-        QPolygon arrow;
-        arrow << arrowHead << leftWing << rightWing << arrowHead;
+        // **绘制 3D 纸飞机**
+        QPolygon body, leftWing, rightWing;
 
-        painter.setPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::RoundCap));
+        // 机身
+        body << QPoint(center.x(), center.y() - PlaneSize)  // 顶点
+             << QPoint(center.x() - 10, center.y() + PlaneSize)
+             << QPoint(center.x() + 10, center.y() + PlaneSize);
+
+        // 左翼
+        leftWing << QPoint(center.x(), center.y() - PlaneSize / 2)
+                 << QPoint(center.x() - PlaneSize, center.y() + PlaneSize / 3)
+                 << QPoint(center.x(), center.y() + PlaneSize / 2);
+
+        // 右翼
+        rightWing << QPoint(center.x(), center.y() - PlaneSize / 2)
+                  << QPoint(center.x() + PlaneSize, center.y() + PlaneSize / 3)
+                  << QPoint(center.x(), center.y() + PlaneSize / 2);
+
+        // 绘制机身
+        painter.setBrush(QBrush(Qt::blue, Qt::SolidPattern));
+        painter.drawPolygon(body);
+
+        // 绘制左翼
         painter.setBrush(QBrush(Qt::red, Qt::SolidPattern));
-        painter.drawPolygon(arrow);
+        painter.drawPolygon(leftWing);
+
+        // 绘制右翼
+        painter.setBrush(QBrush(Qt::green, Qt::SolidPattern));
+        painter.drawPolygon(rightWing);
     }
 
     painter.end();

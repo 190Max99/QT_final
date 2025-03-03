@@ -109,7 +109,7 @@ public:
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QStringLiteral("Dialog"));
         Dialog->setWindowModality(Qt::ApplicationModal);
-        Dialog->resize(462, 300);
+        Dialog->resize(811, 499);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -377,7 +377,7 @@ public:
         label_Z->setFont(font1);
         label_X = new QLabel(tabGsensor);
         label_X->setObjectName(QStringLiteral("label_X"));
-        label_X->setGeometry(QRect(20, 80, 111, 35));
+        label_X->setGeometry(QRect(20, 64, 81, 51));
         label_X->setFont(font1);
         label_Y = new QLabel(tabGsensor);
         label_Y->setObjectName(QStringLiteral("label_Y"));
