@@ -7,9 +7,11 @@
 #include "fpga.h"
 #include "hps_lcd/lcd_graphic.h"
 #include "hps_audio.h"
+#include <QOpenGLWidget>
 
-namespace Ui {
-class Dialog;
+namespace Ui
+{
+    class Dialog;
 }
 
 class Dialog : public QDialog
@@ -27,8 +29,6 @@ private slots:
     void ClickLED();
     void TimerHandle();
     void MoveVideo();
-
-
 
     void on_spinBox_hex0_valueChanged(int arg1);
 
@@ -76,13 +76,13 @@ private:
     uint32_t m_FPGA_SwitchStatus;
 
     // gsensor
-    //bool m_bGsensorDataValid;
+    // bool m_bGsensorDataValid;
     int16_t m_X, m_Y, m_Z;
 
-    float m_Roll = 0.0f;   // 设备绕 X 轴的旋转角度（Roll）
-    float m_Pitch = 0.0f;  // 设备绕 Y 轴的旋转角度（Pitch）
-    float m_Yaw=0.0f;
-    bool m_bGsensorDataValid = false;  // 传感器数据是否有效
+    float m_Roll = 0.0f;  // 设备绕 X 轴的旋转角度（Roll）
+    float m_Pitch = 0.0f; // 设备绕 Y 轴的旋转角度（Pitch）
+    float m_Yaw = 0.0f;
+    bool m_bGsensorDataValid = false; // 传感器数据是否有效
 
     // ir
     u_int64_t m_ir_rx_timeout[24];
@@ -90,7 +90,6 @@ private:
     // ui
     void UI_LedSet(bool AllOn);
     void GetHexResourceName(int nIndex, QString &name);
-
 
     // hardware
     void HW_SetLed();
@@ -106,9 +105,22 @@ private:
     void TabAdcPolling(FPGA *fpga);
     void TabAdcDraw();
 
-protected: //virtual function
-    virtual bool eventFilter(QObject* watched, QEvent* event);
-    virtual void moveEvent(QMoveEvent * event);
+protected: // virtual function
+    virtual bool eventFilter(QObject *watched, QEvent *event);
+    virtual void moveEvent(QMoveEvent *event);
+};
+
+class Gyroscope3DWidget : public QOpenGLWidget
+{
+    Q_OBJECT
+
+public:
+    explicit Gyroscope3DWidget(QWidget *parent = nullptr);
+
+protected:
+    void initializeGL() override;
+    void resizeGL(int w, int h) override;
+    void paintGL() override;
 };
 
 #endif // DIALOG_H

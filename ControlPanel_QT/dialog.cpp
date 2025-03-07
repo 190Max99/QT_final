@@ -4,29 +4,31 @@
 #include <QtGui>
 #include <QPainter>
 #include "hps_lcd/lcd_wcg12864_driver.h"
+#include <QOpenGLFunctions>
 
-Dialog::Dialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Dialog),
-    m_bHPS_ButtonPressed(false),
-    m_FPGA_KeyStatus(0),
-    m_FPGA_SwitchStatus(0)
+Dialog::Dialog(QWidget *parent) : QDialog(parent),
+                                  ui(new Ui::Dialog),
+                                  m_bHPS_ButtonPressed(false),
+                                  m_FPGA_KeyStatus(0),
+                                  m_FPGA_SwitchStatus(0)
 {
 
-     // hps and fpga init
+    // hps and fpga init
     hps = new HPS;
     fpga = new FPGA;
     hps_lcd = new LCD_GRAPHIC;
     hps_audio = new HPS_AUDIO;
 
-    if (!hps_lcd->Init()){
+    if (!hps_lcd->Init())
+    {
         printf("Failed to Init LCD\r\n");
-    }else{
+    }
+    else
+    {
         printf("success to init LCD\r\n");
         hps_lcd->Backlight(false);
         hps_lcd->Demo();
     }
-
 
     // hid help menu
     this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -35,9 +37,8 @@ Dialog::Dialog(QWidget *parent) :
 
     memset(m_ir_rx_timeout, 0, sizeof(m_ir_rx_timeout));
 
-
     // fix windows size
-    this->setFixedSize(this->width(),this->height());
+    this->setFixedSize(this->width(), this->height());
 
     // lcd demo combo box
     ui->comboBox_LcdDemo->addItem("Geometry & Font");
@@ -47,13 +48,13 @@ Dialog::Dialog(QWidget *parent) :
 
     // overwrite draw event: draw for child widget
     ui->tabGsensor->installEventFilter(this);
-    //ui->tabADC->installEventFilter(this);
+    // ui->tabADC->installEventFilter(this);
     ui->tabButton->installEventFilter(this);
     ui->tabHEX->installEventFilter(this);
     ui->tabIR->installEventFilter(this);
     ui->Audio->installEventFilter(this);
 
-  //  ui->tabWidget->setCurrentIndex(0); // default to first page
+    //  ui->tabWidget->setCurrentIndex(0); // default to first page
 
     // create polling timer
     timer = new QTimer(this);
@@ -63,14 +64,13 @@ Dialog::Dialog(QWidget *parent) :
 
 Dialog::~Dialog()
 {
-    fpga->VideoEnable(false); //always close video-in
+    fpga->VideoEnable(false); // always close video-in
     delete ui;
 
     delete hps;
     delete fpga;
     delete hps_lcd;
     delete hps_audio;
-
 }
 
 void Dialog::on_pushButton_LightAllLed_clicked()
@@ -84,17 +84,16 @@ void Dialog::on_pushButton_UnlightAllLed_clicked()
 {
     UI_LedSet(false);
     HW_SetLed();
-
 }
 
-void Dialog::ClickLED(){
-   // qDebug() << "HPS LED Checked:" << ((ui->checkBox_HPS_LED0->isChecked())?"Yes":"No") << "\r\n";
+void Dialog::ClickLED()
+{
+    // qDebug() << "HPS LED Checked:" << ((ui->checkBox_HPS_LED0->isChecked())?"Yes":"No") << "\r\n";
     HW_SetLed();
 }
 
-
-
-void Dialog::UI_LedSet(bool AllOn){
+void Dialog::UI_LedSet(bool AllOn)
+{
     ui->checkBox_HPS_LED0->setChecked(AllOn);
     ui->checkBox_LED0->setChecked(AllOn);
     ui->checkBox_LED1->setChecked(AllOn);
@@ -108,8 +107,9 @@ void Dialog::UI_LedSet(bool AllOn){
     ui->checkBox_LED9->setChecked(AllOn);
 }
 
-void Dialog::HW_SetLed(){
-    //qDebug() << "HW_SetLed is called/r/n";
+void Dialog::HW_SetLed()
+{
+    // qDebug() << "HW_SetLed is called/r/n";
     hps->LedSet(ui->checkBox_HPS_LED0->isChecked());
 
     uint32_t ledMask = 0;
@@ -125,68 +125,70 @@ void Dialog::HW_SetLed(){
         ui->checkBox_LED8,
         ui->checkBox_LED9,
 
-
     };
 
-    for(int i=0;i<10;i++){
+    for (int i = 0; i < 10; i++)
+    {
         if (szCheck[i]->isChecked())
             ledMask |= (0x01 << i);
     }
 
     fpga->LedSet(ledMask);
-
-
 }
 
-
-bool Dialog::eventFilter(QObject* watched, QEvent* event)
+bool Dialog::eventFilter(QObject *watched, QEvent *event)
 {
-    //static int x = 0;
-    if (watched == ui->tabButton && event->type() == QEvent::Paint) {
+    // static int x = 0;
+    if (watched == ui->tabButton && event->type() == QEvent::Paint)
+    {
         TabButtonDraw();
         return true; // return true if you do not want to have the child widget paint on its own afterwards, otherwise, return false.
-
-    }else if(watched == ui->tabGsensor && event->type() == QEvent::Paint) {
+    }
+    else if (watched == ui->tabGsensor && event->type() == QEvent::Paint)
+    {
         TabGsensorDraw();
         return true;
-    }else if(watched == ui->tabHEX && event->type() == QEvent::Paint) {
+    }
+    else if (watched == ui->tabHEX && event->type() == QEvent::Paint)
+    {
         TabHexDraw();
         return true;
-    //}else if(watched == ui->tabADC && event->type() == QEvent::Paint) {
-     //   TabAdcDraw();
-       // return true;
-    }else if(watched == ui->tabIR && event->type() == QEvent::Paint) {
+        //}else if(watched == ui->tabADC && event->type() == QEvent::Paint) {
+        //   TabAdcDraw();
+        // return true;
+    }
+    else if (watched == ui->tabIR && event->type() == QEvent::Paint)
+    {
         TabIrDraw();
         return true;
     }
     return false;
 }
 
-
-
-
-void Dialog::TimerHandle(){
+void Dialog::TimerHandle()
+{
     QWidget *widgetCurrent = ui->tabWidget->currentWidget();
 
-    if (widgetCurrent == ui->tabGsensor){
+    if (widgetCurrent == ui->tabGsensor)
+    {
         TabGsensorPolling(hps);
         ui->tabGsensor->update();
-
-    }else if (widgetCurrent == ui->tabButton){
+    }
+    else if (widgetCurrent == ui->tabButton)
+    {
         TabButtonPolling(hps);
         ui->tabButton->update();
-
-
-    }else if (widgetCurrent == ui->tabIR){
+    }
+    else if (widgetCurrent == ui->tabIR)
+    {
         TabIrPolling(fpga);
         ui->tabIR->update();
 
-   //}else if (widgetCurrent == ui->tabADC){
-          //  TabAdcPolling(fpga);
-          //  ui->tabADC->update();
+        //}else if (widgetCurrent == ui->tabADC){
+        //  TabAdcPolling(fpga);
+        //  ui->tabADC->update();
     }
 }
-
 
 void Dialog::on_spinBox_hex0_valueChanged(int arg1)
 {
@@ -224,13 +226,13 @@ void Dialog::on_spinBox_hex5_valueChanged(int arg1)
     fpga->HexSet(5, ui->spinBox_hex5->value());
 }
 
-
-
-void Dialog::moveEvent(QMoveEvent * event){
+void Dialog::moveEvent(QMoveEvent *event)
+{
     MoveVideo();
 }
 
-void Dialog::MoveVideo(){
+void Dialog::MoveVideo()
+{
 
     if (ui->tabWidget->currentWidget() != ui->tabVideoIn)
         return;
@@ -239,61 +241,63 @@ void Dialog::MoveVideo(){
         return;
 
     QPoint ptScreen;
-    QPoint pt(ui->tabVideoIn->rect().left()+90, ui->tabVideoIn->rect().top()+10);
+    QPoint pt(ui->tabVideoIn->rect().left() + 90, ui->tabVideoIn->rect().top() + 10);
     ptScreen = ui->tabVideoIn->mapToGlobal(pt);
-    fpga->VideoMove(ptScreen.x(),ptScreen.y());
+    fpga->VideoMove(ptScreen.x(), ptScreen.y());
 }
 
 void Dialog::on_tabWidget_currentChanged(int index)
 {
-    if (ui->tabWidget->currentWidget() == ui->tabVideoIn){
+    if (ui->tabWidget->currentWidget() == ui->tabVideoIn)
+    {
         fpga->VideoEnable(true);
         MoveVideo();
-    }else{
+    }
+    else
+    {
         fpga->VideoEnable(false);
     }
-
 }
 
 void Dialog::on_tone_c_clicked()
 {
-    //fpga->PlayTone(FPGA::TONE_C);
+    // fpga->PlayTone(FPGA::TONE_C);
     hps_audio->PlayTone(HPS_AUDIO::TONE_C);
 }
 
 void Dialog::on_tone_d_clicked()
 {
-    //fpga->PlayTone(FPGA::TONE_D);
+    // fpga->PlayTone(FPGA::TONE_D);
     hps_audio->PlayTone(HPS_AUDIO::TONE_D);
 }
 
 void Dialog::on_tone_e_clicked()
 {
-    //fpga->PlayTone(FPGA::TONE_E);
+    // fpga->PlayTone(FPGA::TONE_E);
     hps_audio->PlayTone(HPS_AUDIO::TONE_E);
 }
 
 void Dialog::on_tone_f_clicked()
 {
-    //fpga->PlayTone(FPGA::TONE_F);
+    // fpga->PlayTone(FPGA::TONE_F);
     hps_audio->PlayTone(HPS_AUDIO::TONE_F);
 }
 
 void Dialog::on_tone_g_clicked()
 {
-    //fpga->PlayTone(FPGA::TONE_G);
+    // fpga->PlayTone(FPGA::TONE_G);
     hps_audio->PlayTone(HPS_AUDIO::TONE_G);
 }
 
 void Dialog::on_tone_a_clicked()
 {
-    //fpga->PlayTone(FPGA::TONE_A);
+    // fpga->PlayTone(FPGA::TONE_A);
     hps_audio->PlayTone(HPS_AUDIO::TONE_A);
 }
 
 void Dialog::on_tone_b_clicked()
 {
-    //fpga->PlayTone(FPGA::TONE_B);
+    // fpga->PlayTone(FPGA::TONE_B);
     hps_audio->PlayTone(HPS_AUDIO::TONE_B);
 }
 
@@ -306,21 +310,27 @@ void Dialog::on_checkBox_LCD_Backlight_clicked()
 
 void Dialog::on_comboBox_LcdDemo_currentIndexChanged(int index)
 {
-    if (index == 0){
+    if (index == 0)
+    {
         ui->label_lcd_demo_image->setPixmap(QPixmap(":/new/Myresource/LCD_hello.png"));
         hps_lcd->Demo();
-    }else if (index == 1){
+    }
+    else if (index == 1)
+    {
         ui->label_lcd_demo_image->setPixmap(QPixmap(":/new/Myresource/LCD_checkerboard.png"));
         hps_lcd->Demo_Checkerboard(5);
-    }else if (index == 2){
+    }
+    else if (index == 2)
+    {
         ui->label_lcd_demo_image->setPixmap(QPixmap(":/new/Myresource/LCD_white.png"));
         hps_lcd->Fill(0x00);
-    }else if (index == 3){
+    }
+    else if (index == 3)
+    {
         ui->label_lcd_demo_image->setPixmap(QPixmap(":/new/Myresource/LCD_black.png"));
         hps_lcd->Fill(0xFF);
     }
 }
-
 
 // Dialog::Dialog(QWidget *parent) :
 //     QDialog(parent),
@@ -331,3 +341,23 @@ void Dialog::on_comboBox_LcdDemo_currentIndexChanged(int index)
 // {
 //     ui->setupUi(this);
 // }
+
+Gyroscope3DWidget::Gyroscope3DWidget(QWidget *parent)
+    : QOpenGLWidget(parent) {}
+
+void Gyroscope3DWidget::initializeGL()
+{
+    initializeOpenGLFunctions();
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+void Gyroscope3DWidget::resizeGL(int w, int h)
+{
+    glViewport(0, 0, w, h);
+}
+
+void Gyroscope3DWidget::paintGL()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    // Add 3D rendering code here
+}
