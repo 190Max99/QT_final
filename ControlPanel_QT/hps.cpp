@@ -90,21 +90,29 @@ int HPS::GsensorInit(){
     return file;
 }
 
-bool HPS::GsensorQuery(int16_t *X, int16_t *Y, int16_t *Z){
+bool HPS::GsensorQuery(int16_t accel[3], int16_t gyro[3]) {
     bool bSuccess = false;
-    int16_t szXYZ[3];
 
-    if (m_file_gsensor >= 0){
+    if (m_file_gsensor >= 0) {
         uint8_t id;
-        if (MPU6050_IdRead(m_file_gsensor, &id) && id == 0x68) { // 确保 MPU6050 存在
-            bSuccess = MPU6050_Read_Gyro(m_file_gsensor, szXYZ);
-            if (bSuccess){
-                *X = szXYZ[0];
-                *Y = szXYZ[1];
-                *Z = szXYZ[2];
+        if (MPU6050_IdRead(m_file_gsensor, &id) && id == 0x68) { // 确保 MPU6050 连接正常
+            // **读取加速度计 & 陀螺仪数据**
+            bool accelSuccess = MPU6050_Read_Accel(m_file_gsensor, accel);
+            bool gyroSuccess = MPU6050_Read_Gyro(m_file_gsensor, gyro);
+
+            if (accelSuccess && gyroSuccess) {
+                // **更新四元数**
+                MPU6050_UpdateQuaternion(accel, gyro);
+                bSuccess = true;
             }
         }
     }
-
     return bSuccess;
+}
+
+// **新接口：直接获取欧拉角**
+bool HPS::GetEulerAngles(float *Roll, float *Pitch, float *Yaw) {
+    if (m_file_gsensor < 0) return false;
+    MPU6050_GetEulerAngles(Roll, Pitch, Yaw);
+    return true;
 }

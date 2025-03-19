@@ -26,7 +26,7 @@
 #define MPU6050_GYRO_RANGE_1000  0x10  // ±1000°/s
 #define MPU6050_GYRO_RANGE_2000  0x18  // ±2000°/s
 
-// 寄存器地址
+// MPU6050 相关寄存器地址
 #define MPU6050_REG_PWR_MGMT_1    0x6B  // 电源管理
 #define MPU6050_REG_WHO_AM_I      0x75  // 设备 ID
 #define MPU6050_REG_ACCEL_CONFIG  0x1C  // 加速度计配置
@@ -34,10 +34,16 @@
 #define MPU6050_REG_ACCEL_XOUT_H  0x3B  // 加速度计数据起始地址
 #define MPU6050_REG_GYRO_XOUT_H   0x43  // 陀螺仪数据起始地址
 
-// 功能函数声明
+// **声明 MPU6050 相关操作**
 bool MPU6050_Init(int file);
 bool MPU6050_IdRead(int file, uint8_t *id);
 bool MPU6050_Read_Accel(int file, int16_t accel[3]);
 bool MPU6050_Read_Gyro(int file, int16_t gyro[3]);
+
+// **四元数解算**
+void MPU6050_UpdateQuaternion(int16_t accel[3], int16_t gyro[3]);
+
+// **获取欧拉角（Roll, Pitch, Yaw）**
+void MPU6050_GetEulerAngles(float *roll, float *pitch, float *yaw);
 
 #endif // MPU6050_H
