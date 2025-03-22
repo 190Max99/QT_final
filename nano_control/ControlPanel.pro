@@ -16,6 +16,7 @@ SOURCES += main.cpp\
         dialog.cpp \
     hps.cpp \
     ADLX345.cpp \
+    mpu6050.cpp \
     tab_gsensor.cpp \
     fpga.cpp \
     tab_button.cpp
@@ -23,7 +24,8 @@ SOURCES += main.cpp\
 HEADERS  += dialog.h \
     hps.h \
     ADLX345.h \
-    fpga.h
+    fpga.h \
+    mpu6050.h
 
 FORMS    += dialog.ui
 INCLUDEPATH += /home/syb2002/intelFPGA/20.1/embedded/ip/altera/hps/altera_hps/hwlib/include

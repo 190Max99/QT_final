@@ -1,95 +1,118 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "mpu6050.h"
 #include <stdio.h>
 #include <QPainter>
 #include <QtCore>
 
 
-// QRect: http://qt-project.org/doc/qt-5.0/qtcore/qrect.html
-// QPoint: http://qt-project.org/doc/qt-5.0/qtcore/qpoint.html
+void Dialog::TabGsensorPolling(HPS *hps) {
+    int16_t accel[3], gyro[3];
 
+    if (m_bGsensorDataValid = hps->GsensorQuery(accel, gyro)) {
+        // **使用四元数更新姿态**
+        MPU6050_UpdateQuaternion(accel, gyro);
 
+        // **获取欧拉角**
+        MPU6050_GetEulerAngles(&m_Roll, &m_Pitch, &m_Yaw);
 
+        // 限制角度范围
+        if (m_Roll > 180) m_Roll -= 360;
+        if (m_Roll < -180) m_Roll += 360;
+        if (m_Pitch > 90) m_Pitch = 90;
+        if (m_Pitch < -90) m_Pitch = -90;
+        if (m_Yaw > 180) m_Yaw -= 360;
+        if (m_Yaw < -180) m_Yaw += 360;
 
-
-void Dialog::TabGsensorPolling(HPS *hps){
-    int16_t X,Y,Z;
-    m_bGsensorDataValid = hps->GsensorQuery(&X, &Y, &Z);
-    //m_bGsensorDataValid = 1;
-    //X = 0;
-    //Y = 0;
-    //Z = 1000;
-
-    if (m_bGsensorDataValid){
+        // **更新 UI 显示**
         char szText[64];
-        sprintf(szText, "X=%d mg\r\n", X);
-
+        sprintf(szText, "Roll=%.1f°", m_Roll);
         ui->label_X->setText(szText);
 
-        sprintf(szText, "Y=%d mg\r\n", Y);
+        sprintf(szText, "Pitch=%.1f°", m_Pitch);
         ui->label_Y->setText(szText);
 
-        sprintf(szText, "Z=%d mg\r\n", Z);
+        sprintf(szText, "Yaw=%.1f°", m_Yaw);
         ui->label_Z->setText(szText);
 
-        //
-        m_X = X;
-        m_Y = Y;
-        m_Z = Z;
-
-      //  ui->tabGsensor->update();
-
-    }else{
-        ui->label_X->setText("X=NA");
-        ui->label_Y->setText("Y=NA");
-        ui->label_Z->setText("Z=NA");
+        // **刷新 UI**
+        ui->tabGsensor->update();
+    } else {
+        ui->label_X->setText("Roll=NA");
+        ui->label_Y->setText("Pitch=NA");
+        ui->label_Z->setText("Yaw=NA");
     }
 }
 
-void Dialog::TabGsensorDraw(){
+
+void Dialog::TabGsensorDraw() {
     QPainter painter;
     QRect rc = ui->tabGsensor->rect();
-    const int dy = 20;
-    const int dx = (rc.width()-rc.height())/2+dy;
-    const int BubbleSize = 30;
+    QPoint center = rc.center();  // 旋转中心
+    const int PlaneSize = rc.height() / 4;  // 纸飞机尺寸
 
-    rc.adjust(dx, dy, -dx, -dy);
-    rc.translate(ui->tabGsensor->rect().right() - rc.right() - dy, 0);
-
-    // draw
     painter.begin(ui->tabGsensor);
-
     painter.setRenderHint(QPainter::Antialiasing, true);
+
+    // **绘制背景圆盘**
     painter.setPen(QPen(Qt::black, 2, Qt::DashDotLine, Qt::RoundCap));
     painter.setBrush(QBrush(Qt::lightGray, Qt::SolidPattern));
-    painter.drawEllipse(rc);
+    painter.drawEllipse(center, PlaneSize + 20, PlaneSize + 20);
 
-    // cross- line
+    // **绘制十字线**
     painter.setPen(QPen(Qt::gray, 1, Qt::DotLine, Qt::RoundCap));
-    painter.drawLine(rc.left(), rc.center().y(), rc.right(), rc.center().y());
-    painter.drawLine(rc.center().x(), rc.top(), rc.center().x(), rc.bottom());
+    painter.drawLine(rc.left(), center.y(), rc.right(), center.y());
+    painter.drawLine(center.x(), rc.top(), center.x(), rc.bottom());
 
-    if (m_bGsensorDataValid){
+    if (m_bGsensorDataValid) {
+        // **正确的旋转顺序 (Yaw -> Pitch -> Roll)**
+        QTransform transform;
+        transform.translate(center.x(), center.y());
+        transform.rotate(m_Yaw, Qt::ZAxis);   // 偏航角（绕 Z 轴旋转）
+        transform.rotate(m_Pitch, Qt::XAxis); // 俯仰角（绕 X 轴旋转）
+        transform.rotate(m_Roll, Qt::YAxis);  // 滚转角（绕 Y 轴旋转）
+        transform.translate(-center.x(), -center.y());
+        painter.setTransform(transform);
 
-        // calculate bubble position
-        QPoint ptOffset;
+        // **绘制 3D 纸飞机**
+        QPolygon body, leftWing, rightWing, tail;
 
-        ptOffset.setX((int)((float)(rc.width()-BubbleSize)*(float)-m_X/2000.0));
-        ptOffset.setY((int)((float)(rc.height()-BubbleSize)*(float)m_Y/2000.0));
-        //
+        // **机身**
+        body << QPoint(center.x(), center.y() - PlaneSize)  // 顶点
+             << QPoint(center.x() - 10, center.y() + PlaneSize)
+             << QPoint(center.x() + 10, center.y() + PlaneSize);
 
-        // draw bubble
-        QRect rcBubble(rc.center().x(), rc.center().y(), 0, 0);
-        rcBubble.adjust(-BubbleSize/2, -BubbleSize/2, BubbleSize/2, BubbleSize/2);
-        rcBubble.translate(ptOffset.x(), ptOffset.y());
-        painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap));
+        // **左翼**
+        leftWing << QPoint(center.x(), center.y() - PlaneSize / 2)
+                 << QPoint(center.x() - PlaneSize, center.y() + PlaneSize / 3)
+                 << QPoint(center.x(), center.y() + PlaneSize / 2);
+
+        // **右翼**
+        rightWing << QPoint(center.x(), center.y() - PlaneSize / 2)
+                  << QPoint(center.x() + PlaneSize, center.y() + PlaneSize / 3)
+                  << QPoint(center.x(), center.y() + PlaneSize / 2);
+
+        // **尾翼**
+        tail << QPoint(center.x() - 5, center.y() + PlaneSize / 2)
+             << QPoint(center.x() + 5, center.y() + PlaneSize / 2)
+             << QPoint(center.x(), center.y() + PlaneSize);
+
+        // **绘制机身**
+        painter.setBrush(QBrush(Qt::blue, Qt::SolidPattern));
+        painter.drawPolygon(body);
+
+        // **绘制左翼**
+        painter.setBrush(QBrush(Qt::red, Qt::SolidPattern));
+        painter.drawPolygon(leftWing);
+
+        // **绘制右翼**
         painter.setBrush(QBrush(Qt::green, Qt::SolidPattern));
-        painter.drawEllipse(rcBubble);
+        painter.drawPolygon(rightWing);
 
-
-
+        // **绘制尾翼**
+        painter.setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
+        painter.drawPolygon(tail);
     }
 
     painter.end();
 }
-

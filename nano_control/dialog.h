@@ -39,7 +39,9 @@ private:
     // gsensor
     bool m_bGsensorDataValid;
     int16_t m_X, m_Y, m_Z;
-
+    float m_Roll = 0.0f;   // 设备绕 X 轴的旋转角度（Roll）
+    float m_Pitch = 0.0f;  // 设备绕 Y 轴的旋转角度（Pitch）
+    float m_Yaw=0.0f;
     // ir
     u_int64_t m_ir_rx_timeout[24];
 
