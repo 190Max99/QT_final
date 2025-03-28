@@ -9,7 +9,7 @@
 #define MPU6050_ADDR 0x68
 
 // MPU6050 相关寄存器地址
-#define PWR_MGMT_1    0x6B  // 电源管理寄存器
+#define PWR_MGMT_1    0x00  // 电源管理寄存器
 #define WHO_AM_I      0x75  // 设备 ID
 #define ACCEL_XOUT_H  0x3B  // 加速度计数据起始地址
 #define GYRO_XOUT_H   0x43  // 陀螺仪数据起始地址

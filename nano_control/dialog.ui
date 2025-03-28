@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>300</height>
+    <width>1037</width>
+    <height>556</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -34,8 +34,8 @@
   <property name="modal">
    <bool>false</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="cursor">
       <cursorShape>ArrowCursor</cursorShape>
@@ -44,7 +44,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <property name="iconSize">
       <size>
@@ -92,7 +92,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -123,7 +122,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -154,7 +152,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -185,7 +182,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -216,7 +212,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -247,7 +242,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -278,7 +272,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -309,7 +302,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -353,7 +345,6 @@
         </property>
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <strikeout>false</strikeout>
           <kerning>false</kerning>
@@ -571,10 +562,10 @@
       <widget class="QLabel" name="label_Z">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>160</y>
-         <width>87</width>
-         <height>41</height>
+         <x>9</x>
+         <y>406</y>
+         <width>111</width>
+         <height>17</height>
         </rect>
        </property>
        <property name="font">
@@ -589,10 +580,10 @@
       <widget class="QLabel" name="label_X">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>60</y>
-         <width>87</width>
-         <height>41</height>
+         <x>9</x>
+         <y>132</y>
+         <width>121</width>
+         <height>17</height>
         </rect>
        </property>
        <property name="font">
@@ -607,10 +598,10 @@
       <widget class="QLabel" name="label_Y">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>110</y>
-         <width>87</width>
-         <height>41</height>
+         <x>9</x>
+         <y>278</y>
+         <width>121</width>
+         <height>17</height>
         </rect>
        </property>
        <property name="font">
@@ -620,6 +611,32 @@
        </property>
        <property name="text">
         <string>Y: xxxx.xxx</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_encoder2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>121</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_encoder1">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>131</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </widget>
@@ -633,50 +650,18 @@
  </resources>
  <connections>
   <connection>
-   <sender>checkBox_HPS_LED0</sender>
+   <sender>checkBox_LED7</sender>
    <signal>clicked()</signal>
    <receiver>Dialog</receiver>
    <slot>ClickLED()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>302</x>
-     <y>120</y>
+     <x>167</x>
+     <y>180</y>
     </hint>
     <hint type="destinationlabel">
-     <x>0</x>
-     <y>87</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_LED0</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>ClickLED()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>80</x>
-     <y>107</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>81</x>
-     <y>349</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_LED1</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>ClickLED()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>120</x>
-     <y>146</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>461</x>
-     <y>132</y>
+     <x>496</x>
+     <y>163</y>
     </hint>
    </hints>
   </connection>
@@ -697,50 +682,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_LED3</sender>
+   <sender>checkBox_HPS_LED0</sender>
    <signal>clicked()</signal>
    <receiver>Dialog</receiver>
    <slot>ClickLED()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>198</y>
+     <x>302</x>
+     <y>120</y>
     </hint>
     <hint type="destinationlabel">
-     <x>103</x>
-     <y>371</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_LED4</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>ClickLED()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>61</x>
-     <y>229</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>50</x>
-     <y>409</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_LED5</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>ClickLED()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>164</x>
-     <y>108</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>495</x>
-     <y>107</y>
+     <x>0</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -761,18 +714,82 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_LED7</sender>
+   <sender>checkBox_LED4</sender>
    <signal>clicked()</signal>
    <receiver>Dialog</receiver>
    <slot>ClickLED()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>167</x>
-     <y>180</y>
+     <x>61</x>
+     <y>229</y>
     </hint>
     <hint type="destinationlabel">
-     <x>496</x>
-     <y>163</y>
+     <x>50</x>
+     <y>409</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_LED0</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ClickLED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>349</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_LED3</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ClickLED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>198</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_LED1</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ClickLED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>461</x>
+     <y>132</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_LED5</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ClickLED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>107</y>
     </hint>
    </hints>
   </connection>

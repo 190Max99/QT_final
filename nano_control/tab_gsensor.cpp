@@ -35,6 +35,18 @@ void Dialog::TabGsensorPolling(HPS *hps) {
         sprintf(szText, "Yaw=%.1f°", m_Yaw);
         ui->label_Z->setText(szText);
 
+
+        int count1 = hps->ReadEncoder1();
+        int count2 = hps->ReadEncoder2();
+        char szText1[32];
+
+
+            sprintf(szText1, "e1=%d°", count1);
+            ui->label_encoder1->setText(szText1);
+
+            sprintf(szText1, "e2=%d°", count2);
+            ui->label_encoder2->setText(szText1);
+
         // **刷新 UI**
         ui->tabGsensor->update();
     } else {

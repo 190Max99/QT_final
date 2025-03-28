@@ -30,10 +30,23 @@
 #define BIT_LED         (0x01000000)
 #define BUTTON_MASK     (0x02000000)
 
+#define ENCODER1_PIO_BASE  0x00040000
+#define ENCODER2_PIO_BASE  0x00040010
+// #define HW_REGS_BASE       0xFF200000     // HPS 到 FPGA 的轻量级桥地址
+// #define HW_REGS_SPAN       0x00200000
+// #define HW_REGS_MASK       (HW_REGS_SPAN - 1)
+
+volatile uint32_t *encoder1_ptr;
+volatile uint32_t *encoder2_ptr;
+
+
+
+
 HPS::HPS()
 {
     m_file_gsensor = GsensorInit();
     PioInit();
+    EncoderInit();
 }
 
 HPS::~HPS()
@@ -95,7 +108,7 @@ bool HPS::GsensorQuery(int16_t accel[3], int16_t gyro[3]) {
 
     if (m_file_gsensor >= 0) {
         uint8_t id;
-        if (MPU6050_IdRead(m_file_gsensor, &id) && id == 0x68) { // 确保 MPU6050 连接正常
+        if (MPU6050_IdRead(m_file_gsensor, &id) && (id == 0x68 || id == 0x70)) { // 确保 MPU6050 连接正常
             // **读取加速度计 & 陀螺仪数据**
             bool accelSuccess = MPU6050_Read_Accel(m_file_gsensor, accel);
             bool gyroSuccess = MPU6050_Read_Gyro(m_file_gsensor, gyro);
@@ -115,4 +128,21 @@ bool HPS::GetEulerAngles(float *Roll, float *Pitch, float *Yaw) {
     if (m_file_gsensor < 0) return false;
     MPU6050_GetEulerAngles(Roll, Pitch, Yaw);
     return true;
+}
+
+int HPS::EncoderInit() {
+    int fd = open("/dev/mem", O_RDWR | O_SYNC);
+
+    void* virtual_base = mmap(NULL, HW_REGS_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, HW_REGS_BASE);
+    encoder1_ptr = (uint32_t*)((char*)virtual_base + (ENCODER1_PIO_BASE & HW_REGS_MASK));
+    encoder2_ptr = (uint32_t*)((char*)virtual_base + (ENCODER2_PIO_BASE & HW_REGS_MASK));
+
+}
+
+int32_t HPS::ReadEncoder1() {
+    return *encoder1_ptr;
+}
+
+int32_t HPS::ReadEncoder2() {
+    return *encoder2_ptr;
 }

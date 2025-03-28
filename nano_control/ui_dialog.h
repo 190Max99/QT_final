@@ -15,12 +15,12 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,7 +28,7 @@ QT_BEGIN_NAMESPACE
 class Ui_Dialog
 {
 public:
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout;
     QTabWidget *tabWidget;
     QWidget *tabLED;
     QGroupBox *groupBox_fpga_led;
@@ -58,13 +58,15 @@ public:
     QLabel *label_Z;
     QLabel *label_X;
     QLabel *label_Y;
+    QLabel *label_encoder2;
+    QLabel *label_encoder1;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QStringLiteral("Dialog"));
         Dialog->setWindowModality(Qt::ApplicationModal);
-        Dialog->resize(462, 300);
+        Dialog->resize(1037, 556);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -74,10 +76,10 @@ public:
         Dialog->setContextMenuPolicy(Qt::DefaultContextMenu);
         Dialog->setSizeGripEnabled(false);
         Dialog->setModal(false);
-        verticalLayout = new QVBoxLayout(Dialog);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        gridLayout = new QGridLayout(Dialog);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         tabWidget = new QTabWidget(Dialog);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setCursor(QCursor(Qt::ArrowCursor));
@@ -96,7 +98,6 @@ public:
         checkBox_LED1->setGeometry(QRect(10, 70, 95, 35));
         QFont font;
         font.setBold(false);
-        font.setWeight(50);
         font.setStrikeOut(false);
         font.setKerning(false);
         checkBox_LED1->setFont(font);
@@ -218,37 +219,43 @@ public:
         tabGsensor->setCursor(QCursor(Qt::ArrowCursor));
         label_Z = new QLabel(tabGsensor);
         label_Z->setObjectName(QStringLiteral("label_Z"));
-        label_Z->setGeometry(QRect(20, 160, 87, 41));
+        label_Z->setGeometry(QRect(9, 406, 111, 17));
         QFont font1;
         font1.setPointSize(11);
         label_Z->setFont(font1);
         label_X = new QLabel(tabGsensor);
         label_X->setObjectName(QStringLiteral("label_X"));
-        label_X->setGeometry(QRect(20, 60, 87, 41));
+        label_X->setGeometry(QRect(9, 132, 121, 17));
         label_X->setFont(font1);
         label_Y = new QLabel(tabGsensor);
         label_Y->setObjectName(QStringLiteral("label_Y"));
-        label_Y->setGeometry(QRect(20, 110, 87, 41));
+        label_Y->setGeometry(QRect(9, 278, 121, 17));
         label_Y->setFont(font1);
+        label_encoder2 = new QLabel(tabGsensor);
+        label_encoder2->setObjectName(QStringLiteral("label_encoder2"));
+        label_encoder2->setGeometry(QRect(10, 60, 121, 17));
+        label_encoder1 = new QLabel(tabGsensor);
+        label_encoder1->setObjectName(QStringLiteral("label_encoder1"));
+        label_encoder1->setGeometry(QRect(10, 20, 131, 17));
         QIcon icon2;
         icon2.addFile(QStringLiteral(":/new/Myresource/tab/G-Sensor.png"), QSize(), QIcon::Normal, QIcon::Off);
         tabWidget->addTab(tabGsensor, icon2, QString());
 
-        verticalLayout->addWidget(tabWidget);
+        gridLayout->addWidget(tabWidget, 0, 1, 1, 1);
 
 
         retranslateUi(Dialog);
-        QObject::connect(checkBox_HPS_LED0, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
-        QObject::connect(checkBox_LED0, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
-        QObject::connect(checkBox_LED1, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
-        QObject::connect(checkBox_LED2, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
-        QObject::connect(checkBox_LED3, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
-        QObject::connect(checkBox_LED4, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
-        QObject::connect(checkBox_LED5, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
-        QObject::connect(checkBox_LED6, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
         QObject::connect(checkBox_LED7, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_LED2, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_HPS_LED0, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_LED6, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_LED4, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_LED0, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_LED3, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_LED1, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
+        QObject::connect(checkBox_LED5, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Dialog);
@@ -284,6 +291,8 @@ public:
         label_Z->setText(QApplication::translate("Dialog", "Z: xxxx.xxx", 0));
         label_X->setText(QApplication::translate("Dialog", "X: xxxx.xxx", 0));
         label_Y->setText(QApplication::translate("Dialog", "Y: xxxx.xxx", 0));
+        label_encoder2->setText(QString());
+        label_encoder1->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tabGsensor), QApplication::translate("Dialog", "G-Sensor", 0));
     } // retranslateUi
 

@@ -120,8 +120,31 @@ void Dialog::TimerHandle(){
         TabGsensorPolling(hps);
         ui->tabGsensor->update();
 
-    }else if (widgetCurrent == ui->tabButton){
+    } else if (widgetCurrent == ui->tabButton){
         TabButtonPolling(hps);
+     //   TabEncoderPolling(hps);
         ui->tabButton->update();
-    }
+
+
+    } /*else if (widgetCurrent == ui->tabLED){  // 假设Encoder显示就在LED页面
+        TabEncoderPolling(hps);
+    }*/
 }
+
+// void Dialog::TabEncoderPolling(HPS *hps) {
+//     int count1 = hps->ReadEncoder1();
+//     int count2 = hps->ReadEncoder2();
+//     char szText[32];
+//     if (ui->label_encoder1 && ui->label_encoder2) {
+
+//         sprintf(szText, "e1=%d°", count1);
+//         ui->label_encoder1->setText(szText);
+
+//         sprintf(szText, "e1=%d°", count2);
+//         ui->label_encoder2->setText(szText);
+
+
+
+// }
+
+

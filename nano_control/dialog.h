@@ -25,6 +25,7 @@ private slots:
     void ClickLED();
     void TimerHandle();
 
+
 private:
     Ui::Dialog *ui;
     QTimer *timer;
@@ -58,6 +59,7 @@ private:
     void TabButtonDraw();
     void TabGsensorPolling(HPS *hps);
     void TabGsensorDraw();
+ //   void TabEncoderPolling(HPS *hps);
 
 protected: //virtual function
     virtual bool eventFilter(QObject* watched, QEvent* event);
