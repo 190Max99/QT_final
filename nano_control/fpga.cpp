@@ -20,7 +20,8 @@
 #define FPGA_LED_PIO_BASE   0x3000
 #define FPGA_KEY_PIO_BASE   0x5000
 #define FPGA_SW_PIO_BASE    0x4000
-
+#define ENCODER1_PIO_BASE   0x6000
+#define ENCODER2_PIO_BASE   0x0000
 // ///////////////////////////////////////
 // memory map
 
@@ -86,6 +87,8 @@ bool FPGA::Init()
             m_led_base= (uint8_t *)virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + FPGA_LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
             m_key_base= (uint8_t *)virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + FPGA_KEY_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
             m_sw_base = (uint8_t *)virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + FPGA_SW_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+            m_encoder1_base = (uint8_t *)virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + ENCODER1_PIO_BASE) & ( unsigned long)( HW_REGS_MASK ) );
+            m_encoder2_base = (uint8_t *)virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + ENCODER2_PIO_BASE) & ( unsigned long)( HW_REGS_MASK ) );
 
             bSuccess = true;
         }
@@ -123,3 +126,16 @@ bool FPGA::SwitchRead(uint32_t *mask){
     return true;
 
 }
+
+bool FPGA::Encoder1Read(uint32_t *val) {
+  //  if (!m_bInitSuccess) return false;
+    *val = *(uint32_t *)m_encoder1_base;
+  //  return true;
+}
+
+bool FPGA::Encoder2Read(uint32_t *val) {
+  //  if (!m_bInitSuccess) return false;
+    *val = *(uint32_t *)m_encoder2_base;
+ //   return true;
+}
+

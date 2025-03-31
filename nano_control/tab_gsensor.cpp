@@ -36,15 +36,17 @@ void Dialog::TabGsensorPolling(HPS *hps) {
         ui->label_Z->setText(szText);
 
 
-        int count1 = hps->ReadEncoder1();
-        int count2 = hps->ReadEncoder2();
+        uint32_t count1 = 0;
+        fpga->Encoder1Read(&count1);
+        uint32_t count2 = 0;
+        fpga->Encoder2Read(&count2);
+
         char szText1[32];
 
-
-            sprintf(szText1, "e1=%d°", count1);
+            sprintf(szText1, "e1=%p", count1);
             ui->label_encoder1->setText(szText1);
 
-            sprintf(szText1, "e2=%d°", count2);
+            sprintf(szText1, "e2=%p", count2);
             ui->label_encoder2->setText(szText1);
 
         // **刷新 UI**

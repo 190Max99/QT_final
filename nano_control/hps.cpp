@@ -30,8 +30,8 @@
 #define BIT_LED         (0x01000000)
 #define BUTTON_MASK     (0x02000000)
 
-#define ENCODER1_PIO_BASE  0x00040000
-#define ENCODER2_PIO_BASE  0x00040010
+// #define ENCODER1_PIO_BASE  0x00040000
+// #define ENCODER2_PIO_BASE  0x00040010
 // #define HW_REGS_BASE       0xFF200000     // HPS 到 FPGA 的轻量级桥地址
 // #define HW_REGS_SPAN       0x00200000
 // #define HW_REGS_MASK       (HW_REGS_SPAN - 1)
@@ -46,7 +46,7 @@ HPS::HPS()
 {
     m_file_gsensor = GsensorInit();
     PioInit();
-    EncoderInit();
+  //  EncoderInit();
 }
 
 HPS::~HPS()
@@ -130,19 +130,19 @@ bool HPS::GetEulerAngles(float *Roll, float *Pitch, float *Yaw) {
     return true;
 }
 
-int HPS::EncoderInit() {
-    int fd = open("/dev/mem", O_RDWR | O_SYNC);
+// int HPS::EncoderInit() {
+//     int fd = open("/dev/mem", O_RDWR | O_SYNC);
 
-    void* virtual_base = mmap(NULL, HW_REGS_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, HW_REGS_BASE);
-    encoder1_ptr = (uint32_t*)((char*)virtual_base + (ENCODER1_PIO_BASE & HW_REGS_MASK));
-    encoder2_ptr = (uint32_t*)((char*)virtual_base + (ENCODER2_PIO_BASE & HW_REGS_MASK));
+//     void* virtual_base = mmap(NULL, HW_REGS_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, HW_REGS_BASE);
+//     encoder1_ptr = (uint32_t*)((char*)virtual_base + (ENCODER1_PIO_BASE & HW_REGS_MASK));
+//     encoder2_ptr = (uint32_t*)((char*)virtual_base + (ENCODER2_PIO_BASE & HW_REGS_MASK));
 
-}
+// }
 
-int32_t HPS::ReadEncoder1() {
-    return *encoder1_ptr;
-}
+// int32_t HPS::ReadEncoder1() {
+//     return *encoder1_ptr;
+// }
 
-int32_t HPS::ReadEncoder2() {
-    return *encoder2_ptr;
-}
+// int32_t HPS::ReadEncoder2() {
+//     return *encoder2_ptr;
+// }
