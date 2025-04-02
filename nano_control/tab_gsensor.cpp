@@ -100,7 +100,6 @@ void Dialog::TabGsensorDraw() {
         leftWing << QPoint(center.x(), center.y() - PlaneSize / 2)
                  << QPoint(center.x() - PlaneSize, center.y() + PlaneSize / 3)
                  << QPoint(center.x(), center.y() + PlaneSize / 2);
-
         // **右翼**
         rightWing << QPoint(center.x(), center.y() - PlaneSize / 2)
                   << QPoint(center.x() + PlaneSize, center.y() + PlaneSize / 3)
