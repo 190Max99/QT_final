@@ -60,72 +60,59 @@ void Dialog::TabGsensorPolling(HPS *hps) {
 
 
 void Dialog::TabGsensorDraw() {
+    static QVector<QPointF> carPath;
+
     QPainter painter;
     QRect rc = ui->tabGsensor->rect();
-    QPoint center = rc.center();  // 旋转中心
-    const int PlaneSize = rc.height() / 4;  // 纸飞机尺寸
+    QPoint center = rc.center();  // 起始中心点
+    const int CarSize = rc.height() / 15;
+
+    static QPointF carPos = center;
+    static float lastDistance = 0;
+    static float direction = 0;
+    uint32_t count2 = 0;
+    fpga->Encoder2Read(&count2);
+    float currentDistance = count2; // ✅ 使用你的编码器总里程变量（单位：像素或毫米）
+
+    if (m_bGsensorDataValid) {
+        float step = currentDistance - lastDistance; // 本次移动距离
+        lastDistance = currentDistance;
+        direction = m_Yaw;
+
+        float dx = step * qSin(qDegreesToRadians(direction));
+        float dy = -step * qCos(qDegreesToRadians(direction));
+        carPos += QPointF(dx, dy);
+        carPath.append(carPos);
+    }
 
     painter.begin(ui->tabGsensor);
     painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.fillRect(rc, Qt::white);
 
-    // **绘制背景圆盘**
-    painter.setPen(QPen(Qt::black, 2, Qt::DashDotLine, Qt::RoundCap));
-    painter.setBrush(QBrush(Qt::lightGray, Qt::SolidPattern));
-    painter.drawEllipse(center, PlaneSize + 20, PlaneSize + 20);
+    // 轨迹绘制
+    painter.setPen(QPen(Qt::blue, 1.5));
+    for (int i = 1; i < carPath.size(); ++i)
+        painter.drawLine(carPath[i - 1], carPath[i]);
 
-    // **绘制十字线**
-    painter.setPen(QPen(Qt::gray, 1, Qt::DotLine, Qt::RoundCap));
-    painter.drawLine(rc.left(), center.y(), rc.right(), center.y());
-    painter.drawLine(center.x(), rc.top(), center.x(), rc.bottom());
+    // 朝向变换
+    QTransform transform;
+    transform.translate(carPos.x(), carPos.y());
+    transform.rotate(direction);
+    transform.translate(-carPos.x(), -carPos.y());
+    painter.setTransform(transform);
 
-    if (m_bGsensorDataValid) {
-        // **正确的旋转顺序 (Yaw -> Pitch -> Roll)**
-        QTransform transform;
-        transform.translate(center.x(), center.y());
-        transform.rotate(m_Yaw, Qt::ZAxis);   // 偏航角（绕 Z 轴旋转）
-        transform.rotate(m_Pitch, Qt::XAxis); // 俯仰角（绕 X 轴旋转）
-        transform.rotate(m_Roll, Qt::YAxis);  // 滚转角（绕 Y 轴旋转）
-        transform.translate(-center.x(), -center.y());
-        painter.setTransform(transform);
+    // 小车体
+    QRect carBody(carPos.x() - CarSize, carPos.y() - CarSize / 2, CarSize * 2, CarSize);
+    painter.setBrush(QColor(100, 100, 255));
+    painter.drawRoundedRect(carBody, 5, 5);
 
-        // **绘制 3D 纸飞机**
-        QPolygon body, leftWing, rightWing, tail;
-
-        // **机身**
-        body << QPoint(center.x(), center.y() - PlaneSize)  // 顶点
-             << QPoint(center.x() - 10, center.y() + PlaneSize)
-             << QPoint(center.x() + 10, center.y() + PlaneSize);
-
-        // **左翼**
-        leftWing << QPoint(center.x(), center.y() - PlaneSize / 2)
-                 << QPoint(center.x() - PlaneSize, center.y() + PlaneSize / 3)
-                 << QPoint(center.x(), center.y() + PlaneSize / 2);
-        // **右翼**
-        rightWing << QPoint(center.x(), center.y() - PlaneSize / 2)
-                  << QPoint(center.x() + PlaneSize, center.y() + PlaneSize / 3)
-                  << QPoint(center.x(), center.y() + PlaneSize / 2);
-
-        // **尾翼**
-        tail << QPoint(center.x() - 5, center.y() + PlaneSize / 2)
-             << QPoint(center.x() + 5, center.y() + PlaneSize / 2)
-             << QPoint(center.x(), center.y() + PlaneSize);
-
-        // **绘制机身**
-        painter.setBrush(QBrush(Qt::blue, Qt::SolidPattern));
-        painter.drawPolygon(body);
-
-        // **绘制左翼**
-        painter.setBrush(QBrush(Qt::red, Qt::SolidPattern));
-        painter.drawPolygon(leftWing);
-
-        // **绘制右翼**
-        painter.setBrush(QBrush(Qt::green, Qt::SolidPattern));
-        painter.drawPolygon(rightWing);
-
-        // **绘制尾翼**
-        painter.setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
-        painter.drawPolygon(tail);
-    }
+    // 方向箭头
+    QPolygon arrow;
+    arrow << QPoint(carPos.x(), carPos.y() - CarSize / 2)
+          << QPoint(carPos.x() - 5, carPos.y() - CarSize - 5)
+          << QPoint(carPos.x() + 5, carPos.y() - CarSize - 5);
+    painter.setBrush(Qt::red);
+    painter.drawPolygon(arrow);
 
     painter.end();
 }

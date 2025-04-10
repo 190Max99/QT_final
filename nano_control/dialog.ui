@@ -40,11 +40,17 @@
      <property name="cursor">
       <cursorShape>ArrowCursor</cursorShape>
      </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;road&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">dsf</string>
+     </property>
      <property name="tabShape">
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <property name="iconSize">
       <size>
@@ -547,6 +553,11 @@
         </property>
        </widget>
       </widget>
+     </widget>
+     <widget class="QWidget" name="taBroad">
+      <attribute name="title">
+       <string>Page</string>
+      </attribute>
      </widget>
      <widget class="QWidget" name="tabGsensor">
       <property name="cursor">

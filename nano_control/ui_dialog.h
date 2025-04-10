@@ -54,6 +54,7 @@ public:
     QLabel *label_sw1;
     QLabel *label_sw2;
     QLabel *label_sw3;
+    QWidget *taBroad;
     QWidget *tabGsensor;
     QLabel *label_Z;
     QLabel *label_X;
@@ -83,6 +84,7 @@ public:
         tabWidget = new QTabWidget(Dialog);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setCursor(QCursor(Qt::ArrowCursor));
+        tabWidget->setStyleSheet(QStringLiteral("dsf"));
         tabWidget->setTabShape(QTabWidget::Rounded);
         tabWidget->setIconSize(QSize(32, 32));
         tabWidget->setMovable(false);
@@ -214,6 +216,9 @@ public:
         QIcon icon1;
         icon1.addFile(QStringLiteral(":/new/Myresource/BUTTON_UP.bmp"), QSize(), QIcon::Normal, QIcon::Off);
         tabWidget->addTab(tabButton, icon1, QString());
+        taBroad = new QWidget();
+        taBroad->setObjectName(QStringLiteral("taBroad"));
+        tabWidget->addTab(taBroad, QString());
         tabGsensor = new QWidget();
         tabGsensor->setObjectName(QStringLiteral("tabGsensor"));
         tabGsensor->setCursor(QCursor(Qt::ArrowCursor));
@@ -255,7 +260,7 @@ public:
         QObject::connect(checkBox_LED1, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
         QObject::connect(checkBox_LED5, SIGNAL(clicked()), Dialog, SLOT(ClickLED()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(Dialog);
@@ -264,6 +269,9 @@ public:
     void retranslateUi(QDialog *Dialog)
     {
         Dialog->setWindowTitle(QApplication::translate("Dialog", "Control Panel", 0));
+#ifndef QT_NO_TOOLTIP
+        tabWidget->setToolTip(QApplication::translate("Dialog", "<html><head/><body><p>road</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         groupBox_fpga_led->setTitle(QApplication::translate("Dialog", "FPGA LED", 0));
         checkBox_LED1->setText(QApplication::translate("Dialog", "LED1", 0));
         checkBox_LED0->setText(QApplication::translate("Dialog", "LED0", 0));
@@ -288,6 +296,7 @@ public:
         label_sw2->setText(QString());
         label_sw3->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tabButton), QApplication::translate("Dialog", "Button", 0));
+        tabWidget->setTabText(tabWidget->indexOf(taBroad), QApplication::translate("Dialog", "Page", 0));
         label_Z->setText(QApplication::translate("Dialog", "Z: xxxx.xxx", 0));
         label_X->setText(QApplication::translate("Dialog", "X: xxxx.xxx", 0));
         label_Y->setText(QApplication::translate("Dialog", "Y: xxxx.xxx", 0));
