@@ -7,24 +7,26 @@
 
 
 void Dialog::TabGsensorPolling(HPS *hps) {
-    int16_t accel[3], gyro[3];
+    int16_t GyroX, GyroY, GyroZ;
+    static const float dt = 0.1;  // 采样时间（100ms）
 
-    if (m_bGsensorDataValid = hps->GsensorQuery(accel, gyro)) {
-        // **使用四元数更新姿态**
-        MPU6050_UpdateQuaternion(accel, gyro);
+    m_bGsensorDataValid = hps->GsensorQuery(&GyroX, &GyroY, &GyroZ);
 
-        // **获取欧拉角**
-        MPU6050_GetEulerAngles(&m_Roll, &m_Pitch, &m_Yaw);
+    if (m_bGsensorDataValid) {
+        // 角速度转换为角度 (Roll, Pitch)
+        m_Roll += (GyroX / 131.0) * dt;   // 计算 X 轴旋转角度（Roll）
+        m_Pitch += (GyroY / 131.0) * dt;  // 计算 Y 轴旋转角度（Pitch）
+        m_Yaw -= (GyroZ / 131.0) * dt;
 
-        // 限制角度范围
+        // 限制角度范围，防止溢出
         if (m_Roll > 180) m_Roll -= 360;
         if (m_Roll < -180) m_Roll += 360;
-        if (m_Pitch > 90) m_Pitch = 90;
+        if (m_Pitch > 90) m_Pitch = 90;   // Pitch 角度范围（防止翻转）
         if (m_Pitch < -90) m_Pitch = -90;
-        if (m_Yaw > 180) m_Yaw -= 360;
-        if (m_Yaw < -180) m_Yaw += 360;
+        if (m_Yaw > 180) m_Yaw -= 360;   // Pitch 角度范围（防止翻转）
+        if (m_Yaw < -180) m_Yaw +=360 ;
 
-        // **更新 UI 显示**
+        // 更新 UI 角度显示
         char szText[64];
         sprintf(szText, "Roll=%.1f°", m_Roll);
         ui->label_X->setText(szText);
@@ -35,21 +37,7 @@ void Dialog::TabGsensorPolling(HPS *hps) {
         sprintf(szText, "Yaw=%.1f°", m_Yaw);
         ui->label_Z->setText(szText);
 
-
-        uint32_t count1 = 0;
-        fpga->Encoder1Read(&count1);
-        uint32_t count2 = 0;
-        fpga->Encoder2Read(&count2);
-
-        char szText1[32];
-
-            sprintf(szText1, "e1=%p", count1);
-            ui->label_encoder1->setText(szText1);
-
-            sprintf(szText1, "e2=%p", count2);
-            ui->label_encoder2->setText(szText1);
-
-        // **刷新 UI**
+        // 更新 UI 绘制
         ui->tabGsensor->update();
     } else {
         ui->label_X->setText("Roll=NA");
@@ -68,25 +56,24 @@ void Dialog::TabGsensorDraw() {
     const int CarSize = rc.height() / 15;
 
     static QPointF carPos = center;
-    static float lastDistance = 0;
-    static float direction = 0;
-    uint32_t count2 = 0;
-    fpga->Encoder2Read(&count2);
-    float currentDistance = count2; // ✅ 使用你的编码器总里程变量（单位：像素或毫米）
+    static float direction = 0;  // 初始朝向角度（0 朝上）
 
+    // 移动逻辑（基于航向角）
     if (m_bGsensorDataValid) {
-        float step = currentDistance - lastDistance; // 本次移动距离
-        lastDistance = currentDistance;
+        float step = 3.0;  // 可根据编码器速度计算
         direction = m_Yaw;
 
         float dx = step * qSin(qDegreesToRadians(direction));
-        float dy = -step * qCos(qDegreesToRadians(direction));
+        float dy = -step * qCos(qDegreesToRadians(direction));  // Y 轴向下
+
         carPos += QPointF(dx, dy);
         carPath.append(carPos);
     }
 
     painter.begin(ui->tabGsensor);
     painter.setRenderHint(QPainter::Antialiasing, true);
+
+    // 背景
     painter.fillRect(rc, Qt::white);
 
     // 轨迹绘制
@@ -94,19 +81,19 @@ void Dialog::TabGsensorDraw() {
     for (int i = 1; i < carPath.size(); ++i)
         painter.drawLine(carPath[i - 1], carPath[i]);
 
-    // 朝向变换
+    // 变换：小车朝向
     QTransform transform;
     transform.translate(carPos.x(), carPos.y());
     transform.rotate(direction);
     transform.translate(-carPos.x(), -carPos.y());
     painter.setTransform(transform);
 
-    // 小车体
+    // 小车矩形车身
     QRect carBody(carPos.x() - CarSize, carPos.y() - CarSize / 2, CarSize * 2, CarSize);
     painter.setBrush(QColor(100, 100, 255));
     painter.drawRoundedRect(carBody, 5, 5);
 
-    // 方向箭头
+    // 前方箭头表示方向
     QPolygon arrow;
     arrow << QPoint(carPos.x(), carPos.y() - CarSize / 2)
           << QPoint(carPos.x() - 5, carPos.y() - CarSize - 5)
@@ -116,3 +103,4 @@ void Dialog::TabGsensorDraw() {
 
     painter.end();
 }
+

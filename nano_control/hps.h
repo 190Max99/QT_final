@@ -12,8 +12,8 @@ public:
 
     bool LedSet(bool bOn);
     bool IsButtonPressed();
-    bool GsensorQuery(int16_t accel[3], int16_t gyro[3]);
-    bool GetEulerAngles(float *Roll, float *Pitch, float *Yaw);
+      bool GsensorQuery(int16_t *X, int16_t *Y, int16_t *Z);
+  //  bool GetEulerAngles(float *Roll, float *Pitch, float *Yaw);
     int32_t ReadEncoder1();
     int32_t ReadEncoder2();
 
