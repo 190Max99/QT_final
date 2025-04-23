@@ -4,7 +4,12 @@
 #include <stdio.h>
 #include <QPainter>
 #include <QtCore>
+#define ALPHA 0.08  // 可以调整该值，较小的alpha更平滑
 
+// 上一时刻的陀螺仪数据
+static float GyroX_previous = 0.0f;
+static float GyroY_previous = 0.0f;
+static float GyroZ_previous = 0.0f;
 
 void Dialog::TabGsensorPolling(HPS *hps) {
     int16_t GyroX, GyroY, GyroZ;
@@ -14,9 +19,22 @@ void Dialog::TabGsensorPolling(HPS *hps) {
 
     if (m_bGsensorDataValid) {
         // 角速度转换为角度 (Roll, Pitch)
-        m_Roll += (GyroX / 131.0) * dt;   // 计算 X 轴旋转角度（Roll）
-        m_Pitch += (GyroY / 131.0) * dt;  // 计算 Y 轴旋转角度（Pitch）
-        m_Yaw -= (GyroZ / 131.0) * dt;
+        float GyroX_filtered = ALPHA * GyroX + (1 - ALPHA) * GyroX_previous;
+        float GyroY_filtered = ALPHA * GyroY + (1 - ALPHA) * GyroY_previous;
+        float GyroZ_filtered = ALPHA * GyroZ + (1 - ALPHA) * GyroZ_previous;
+
+        // 更新上一时刻的陀螺仪数据
+        GyroX_previous = GyroX_filtered;
+        GyroY_previous = GyroY_filtered;
+        GyroZ_previous = GyroZ_filtered;
+
+        // 将滤波后的数据用于姿态计算
+        m_Roll += (GyroX_filtered / 131.0) * dt;
+        m_Pitch += (GyroY_filtered / 131.0) * dt;
+        m_Yaw -= (GyroZ_filtered / 131.0) * dt;
+        // m_Roll += (GyroX / 131.0) * dt;   // 计算 X 轴旋转角度（Roll）
+        // m_Pitch += (GyroY / 131.0) * dt;  // 计算 Y 轴旋转角度（Pitch）
+        // m_Yaw -= (GyroZ / 131.0) * dt;
 
         // 限制角度范围，防止溢出
         if (m_Roll > 180) m_Roll -= 360;
@@ -60,7 +78,7 @@ void Dialog::TabGsensorDraw() {
 
     // 移动逻辑（基于航向角）
     if (m_bGsensorDataValid) {
-        float step = 3.0;  // 可根据编码器速度计算
+        float step = 1;  // 可根据编码器速度计算
         direction = m_Yaw;
 
         float dx = step * qSin(qDegreesToRadians(direction));
@@ -92,6 +110,19 @@ void Dialog::TabGsensorDraw() {
     QRect carBody(carPos.x() - CarSize, carPos.y() - CarSize / 2, CarSize * 2, CarSize);
     painter.setBrush(QColor(100, 100, 255));
     painter.drawRoundedRect(carBody, 5, 5);
+    // 轮子宽度和高度
+    int wheelWidth = CarSize / 5;  // 轮子的宽度
+    int wheelHeight = CarSize / 2; // 轮子的高度
+
+    // 绘制左轮
+    QRect leftWheel(carPos.x() - CarSize - wheelWidth, carPos.y() - wheelHeight / 2, wheelWidth, wheelHeight);
+    painter.setBrush(QColor(0, 0, 0)); // 轮子颜色为黑色
+    painter.drawRect(leftWheel);
+
+    // 绘制右轮
+    QRect rightWheel(carPos.x() + CarSize, carPos.y() - wheelHeight / 2, wheelWidth, wheelHeight);
+    painter.setBrush(QColor(0, 0, 0)); // 轮子颜色为黑色
+    painter.drawRect(rightWheel);
 
     // 前方箭头表示方向
     QPolygon arrow;
